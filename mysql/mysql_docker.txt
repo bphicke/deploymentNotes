@@ -1,0 +1,15 @@
+install docker pull mysql
+
+run
+docker run --name MYSQLDEVORPRODORTEST -e MYSQL_ROOT_PASSWORD=my-secret-pw --network br0 -v /my/own/datadir:/var/lib/mysql -d mysql:tag
+
+where mysql:tag is the tag version
+
+#example
+
+
+
+where /my/own/datadir  is the directory to save the database into on the host system
+if you are restarting a database, omit the root password flag
+
+
