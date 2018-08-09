@@ -1,0 +1,46 @@
+From Brand New Instance
+
+folders node/ for all node apps
+folders docker/ for all docker images (non node apps. db, ngx, etc)
+
+# Install Docker
+download docker (script)
+#add user to docker group
+sudo usermod -aG docker root
+#resets user
+su 
+# verify user is in docker group
+id -nG 
+
+#create docker bridge network
+docker network create br0
+#list docker networks
+docker network ls
+#inspect docker thing
+docker network inspect br0
+
+
+
+
+#install nginx
+create nginxdirectory somewhere
+copy Dockerfile
+copy run.sh
+copy nginx.conf, change settings
+run script
+
+
+
+#modifying docker scripts
+-e allows you to add an env var while running. put it right after the -d!
+example:
+echo "restarting container"
+docker stop cptnode && docker rm cptnode && docker build -t cptnode . && docker run --name cptnode --network br0 -d -e ENV_VAR_TEST=HELLO cptnode
+
+#after spinning up a docker
+docker ps
+docker logs [dockername]
+
+
+#go into the container
+docker exec -it containername bash
